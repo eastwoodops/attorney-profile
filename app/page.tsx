@@ -11,7 +11,12 @@ export default function Home() {
       <section className="relative pt-32 pb-24 md:pt-48 md:pb-48 px-6 md:px-12 border-b border-[#0F172A]/5">
         <div className="container-legal">
           <div className="max-w-4xl">
-            <h1 className="mb-12">
+            {/* Logo Incorporation */}
+            <div className="mb-12">
+              <img src="/alderman_logo.png" alt="Alderman Law Firm" className="h-16 object-contain" />
+            </div>
+            
+            <h1 className={`${playfair.className} mb-12`}>
               Appellate & Complex <br/>Civil Litigation.
             </h1>
             <p className="prose-legal text-xl md:text-2xl mb-16 text-slate-600 max-w-2xl">
@@ -75,7 +80,7 @@ export default function Home() {
         <div className="container-legal">
           <div className="flex justify-between items-end mb-20">
             <h2 className="text-5xl">Practice Areas</h2>
-            <a href="#" className="hidden md:block text-xs font-bold uppercase tracking-[0.2em] text-[#C5A059] border-b border-[#C5A059] pb-2 hover:text-[#0F172A] hover:border-[#0F172A] transition-colors">View All Capabilities</a>
+            <a href="#" className="hidden md:block text-xs font-bold uppercase tracking-[0.2em] text-[#C5A059] border-b border-[#C5A059] pb-2 hover:text-[#0F172A] hover:border-[#0F172A] transition-colors">View All Areas of Practice</a>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
