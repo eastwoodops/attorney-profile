@@ -22,21 +22,20 @@
   }
 
   /* 
-     Heading Scale: Major Third (1.25)
-     Philosophy: The Headline is the Verdict. 
-     Restrained authority, high contrast.
+     Heading Scale: Editorial / Display
+     Philosophy: The Headline is the Verdict.
   */
   h1 {
-    @apply font-serif text-5xl md:text-7xl font-semibold tracking-tight leading-[1.1] text-navy;
+    @apply font-serif text-6xl md:text-8xl font-semibold tracking-tight leading-[1.05] text-navy;
   }
   h2 {
-    @apply font-serif text-3xl md:text-5xl font-semibold tracking-tight leading-[1.2] text-navy;
+    @apply font-serif text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-navy;
   }
   h3 {
     @apply font-serif text-2xl md:text-3xl font-medium tracking-tight leading-[1.3] text-navy;
   }
   h4 {
-    @apply font-sans text-sm font-bold uppercase tracking-widest text-gold;
+    @apply font-sans text-xs font-bold uppercase tracking-[0.2em] text-gold;
   }
   
   /* 
