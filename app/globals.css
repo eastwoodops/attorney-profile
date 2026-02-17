@@ -4,17 +4,53 @@
   --color-navy: #0f172a;
   --color-gold: #c5a059;
   --color-paper: #f5f5f0;
+  --color-charcoal: #1e293b;
   
   --font-serif: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  
+  /* Spacing Scale - "Expensive" white space */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-30: 7.5rem;
 }
 
-/* Base Styles */
+/* Typography Philosophy Implementation */
 @layer base {
   body {
-    @apply font-sans;
+    @apply font-sans text-charcoal bg-paper antialiased;
+    font-feature-settings: "kern", "liga";
   }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif text-navy font-semibold tracking-tight;
+
+  /* 
+     Heading Scale: Major Third (1.25)
+     Philosophy: The Headline is the Verdict. 
+     Restrained authority, high contrast.
+  */
+  h1 {
+    @apply font-serif text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1] text-navy;
+  }
+  h2 {
+    @apply font-serif text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2] text-navy;
+  }
+  h3 {
+    @apply font-serif text-2xl md:text-3xl font-medium tracking-tight leading-[1.3] text-navy;
+  }
+  h4 {
+    @apply font-sans text-sm font-bold uppercase tracking-widest text-gold;
+  }
+  
+  /* 
+     Body Text: Cognitive Ease
+     High legibility, generous line height (1.6-1.7), 
+     mimicking high-quality legal briefs.
+  */
+  p {
+    @apply font-sans leading-relaxed;
+  }
+  
+  /* Utility for "Legal" feel */
+  .prose-legal {
+    @apply max-w-prose leading-[1.7] text-lg text-slate-700;
   }
 }
