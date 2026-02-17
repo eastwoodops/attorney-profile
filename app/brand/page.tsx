@@ -221,6 +221,73 @@ export default function BrandPage() {
           </div>
         </section>
 
+        {/* INTAKE UX */}
+        <section className="grid md:grid-cols-12 gap-12">
+          <div className="md:col-span-4">
+            <h4 className="mb-4 text-slate-400 font-sans text-xs font-bold uppercase tracking-widest">06. Intake UX</h4>
+            <p className="text-sm text-slate-600 mb-4">
+              <strong>The Velvet Rope:</strong> We don't beg for leads. We offer a secure, privileged channel for qualified case reviews.
+            </p>
+            <ul className="text-sm text-slate-500 space-y-2 list-disc pl-4">
+              <li>High-trust microcopy</li>
+              <li>"Paper-like" input fields</li>
+              <li>Clear privacy signals</li>
+            </ul>
+          </div>
+          
+          <div className="md:col-span-8">
+            <div className="bg-white border border-slate-200 p-8 md:p-12 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gold"></div>
+              
+              <div className="grid md:grid-cols-2 gap-12">
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-serif text-navy">Request Confidential Review</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Submit your details for a preliminary conflict check and case assessment. 
+                    Your information is held in strict confidence.
+                  </p>
+                  
+                  <div className="space-y-4 pt-4">
+                    <div className="flex items-center gap-3 text-xs text-slate-500 uppercase tracking-widest font-semibold">
+                      <div className="w-2 h-2 bg-navy rounded-full"></div> Direct Line: 720-588-3529
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-slate-500 uppercase tracking-widest font-semibold">
+                      <div className="w-2 h-2 bg-navy rounded-full"></div> Fort Collins Office
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-navy uppercase tracking-widest">Full Name</label>
+                    <div className="border-b border-slate-300 py-2">
+                      <span className="text-slate-400 italic text-sm">Enter your legal name...</span>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-navy uppercase tracking-widest">Case Type</label>
+                    <div className="border-b border-slate-300 py-2 flex justify-between items-center">
+                      <span className="text-navy text-sm">Appellate Representation</span>
+                      <span className="text-slate-400 text-xs">▼</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-4">
+                    <button className="w-full bg-navy text-white px-6 py-4 text-xs font-bold uppercase tracking-widest hover:bg-charcoal transition-colors flex justify-between items-center group">
+                      <span>Begin Secure Transmission</span>
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </button>
+                    <p className="text-[10px] text-center text-slate-400 mt-3 flex justify-center items-center gap-1">
+                      <span>🔒</span> Encrypted & Privileged
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </div>
     </div>
   );
