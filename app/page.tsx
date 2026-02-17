@@ -53,7 +53,7 @@ export default function Home() {
             </div>
             <div>
               <h2 className="leading-tight">
-                A Practice Built on <br/> the Record.
+                A Practice Built on the Record.
               </h2>
               <div className="h-1 w-16 bg-[#C5A059] mt-8"></div>
             </div>
