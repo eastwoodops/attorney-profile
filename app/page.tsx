@@ -9,19 +9,19 @@ export default function Home() {
       
       {/* 1. HERO */}
       <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 px-6 md:px-12 border-b border-[#0F172A]/10">
-        <div className="max-w-6xl mx-auto">
+        <div className="container-legal">
           <div className="max-w-3xl">
-            <h1 className={`${playfair.className} text-6xl md:text-7xl font-semibold text-[#0F172A] leading-[1.1] mb-8`}>
+            <h1 className="mb-8">
               Appellate & Complex <br/>Civil Litigation.
             </h1>
-            <p className="text-xl md:text-2xl text-slate-700 leading-relaxed mb-12 max-w-2xl">
+            <p className="prose-legal text-xl mb-12">
               When the trial goes wrong, the record speaks. We handle the appeal and enforce the judgment.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
-              <button className="bg-[#0F172A] text-white px-8 py-4 text-sm font-bold uppercase tracking-widest hover:bg-[#1E293B] transition-colors rounded-none">
+              <button className="btn-primary">
                 Review Your Case
               </button>
-              <button className="border border-[#0F172A] text-[#0F172A] px-8 py-4 text-sm font-bold uppercase tracking-widest hover:bg-[#0F172A] hover:text-white transition-colors rounded-none">
+              <button className="btn-secondary">
                 Practice Areas
               </button>
             </div>
@@ -31,7 +31,7 @@ export default function Home() {
 
       {/* 2. TRUST SIGNALS (Bar) */}
       <div className="border-b border-[#0F172A]/5 bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-wrap justify-between items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        <div className="container-legal py-8 flex flex-wrap justify-between items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
           <span className={`${playfair.className} text-xl font-bold text-[#0F172A]`}>U.S. Supreme Court Bar</span>
           <span className={`${playfair.className} text-xl font-bold text-[#0F172A]`}>10th Circuit Court of Appeals</span>
           <span className={`${playfair.className} text-xl font-bold text-[#0F172A]`}>Colorado Supreme Court</span>
@@ -40,23 +40,23 @@ export default function Home() {
       </div>
 
       {/* 3. PHILOSOPHY */}
-      <section className="py-24 px-6 md:px-12 bg-white">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-16">
+      <section className="section-spacing bg-white">
+        <div className="container-legal grid md:grid-cols-12 gap-16">
           <div className="md:col-span-4">
-            <h2 className={`${playfair.className} text-4xl font-semibold text-[#0F172A] mb-6`}>
+            <h2 className="mb-6">
               A Practice Built on the Record.
             </h2>
             <div className="h-px w-12 bg-[#C5A059] mb-6"></div>
           </div>
           <div className="md:col-span-8 grid md:grid-cols-2 gap-12">
             <div>
-              <h3 className={`${playfair.className} text-2xl font-medium text-[#0F172A] mb-3`}>Appellate Focus</h3>
+              <h3 className="mb-3">Appellate Focus</h3>
               <p className="text-slate-600 leading-relaxed">
                 Appeals require a different skill set than trials. We analyze the record for reversible error and write briefs designed for judges, not juries.
               </p>
             </div>
             <div>
-              <h3 className={`${playfair.className} text-2xl font-medium text-[#0F172A] mb-3`}>Document Precision</h3>
+              <h3 className="mb-3">Document Precision</h3>
               <p className="text-slate-600 leading-relaxed">
                 In complex civil disputes—from promissory notes to real estate—the answer is in the documents. We strip away the noise to enforce the written terms.
               </p>
@@ -66,10 +66,10 @@ export default function Home() {
       </section>
 
       {/* 4. PRACTICE AREAS */}
-      <section className="py-24 px-6 md:px-12 bg-[#F5F5F0] border-t border-[#0F172A]/10">
-        <div className="max-w-6xl mx-auto">
+      <section className="section-spacing bg-[#F5F5F0] border-t border-[#0F172A]/10">
+        <div className="container-legal">
           <div className="flex justify-between items-end mb-16">
-            <h2 className={`${playfair.className} text-4xl font-semibold text-[#0F172A]`}>Practice Areas</h2>
+            <h2>Practice Areas</h2>
             <a href="#" className="hidden md:block text-sm font-bold uppercase tracking-widest text-[#C5A059] border-b border-[#C5A059] pb-1 hover:text-[#0F172A] hover:border-[#0F172A] transition-colors">View All Capabilities</a>
           </div>
           
@@ -80,9 +80,9 @@ export default function Home() {
               { title: "Breach of Contract", desc: "Disputes over written agreements and performance." },
               { title: "Real Estate", desc: "Title, ownership, and transaction failures." }
             ].map((area, i) => (
-              <div key={i} className="group bg-white p-8 border border-slate-200 hover:border-[#C5A059] transition-colors shadow-sm">
+              <div key={i} className="group bg-white p-8 border border-slate-200 hover:border-[#C5A059] transition-colors duration-300 shadow-sm">
                 <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-4 block">0{i+1}</span>
-                <h3 className={`${playfair.className} text-2xl text-[#0F172A] mb-3 group-hover:text-[#C5A059] transition-colors`}>{area.title}</h3>
+                <h3 className="text-2xl mb-3 group-hover:text-[#C5A059] transition-colors duration-300">{area.title}</h3>
                 <p className="text-sm text-slate-600 mb-6 leading-relaxed">{area.desc}</p>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#0F172A] border-b border-transparent group-hover:border-[#0F172A] pb-0.5 transition-all">Details</span>
               </div>
@@ -92,11 +92,11 @@ export default function Home() {
       </section>
 
       {/* 5. ATTORNEY BIO */}
-      <section className="py-24 px-6 md:px-12 bg-[#0F172A] text-white">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="section-spacing bg-[#0F172A] text-white">
+        <div className="container-legal grid md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
             <span className="text-[#C5A059] text-xs font-bold uppercase tracking-widest mb-4 block">Principal Attorney</span>
-            <h2 className={`${playfair.className} text-4xl md:text-5xl font-semibold mb-6`}>Jerold A. Alderman</h2>
+            <h2 className="text-white mb-6">Jerold A. Alderman</h2>
             <p className="text-slate-300 text-lg leading-relaxed mb-8 max-w-md">
               "The appeal is not a re-do of the trial. It is a precise surgical intervention on the record."
             </p>
@@ -122,15 +122,15 @@ export default function Home() {
       </section>
 
       {/* 6. FAQ / FOOTER CTA */}
-      <section className="py-24 px-6 md:px-12 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`${playfair.className} text-4xl font-semibold text-[#0F172A] mb-6`}>
+      <section className="section-spacing bg-white">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <h2 className="mb-6">
             Is Your Judgment Final?
           </h2>
-          <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto">
+          <p className="prose-legal text-xl mb-12 mx-auto">
             Time is the enemy of an appeal. Strict deadlines apply to post-trial motions and notices of appeal. Do not wait to review the record.
           </p>
-          <button className="bg-[#0F172A] text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:bg-[#C5A059] transition-colors rounded-none shadow-xl shadow-[#0F172A]/10">
+          <button className="btn-primary shadow-xl shadow-[#0F172A]/10">
             Schedule a Case Review
           </button>
           <p className="mt-6 text-xs text-slate-400 uppercase tracking-widest">Confidential & Secure</p>
@@ -139,7 +139,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="bg-[#F5F5F0] border-t border-[#0F172A]/10 py-16 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-12 text-sm">
+        <div className="container-legal grid md:grid-cols-4 gap-12 text-sm">
           <div className="col-span-2">
             <span className={`${playfair.className} text-2xl font-bold text-[#0F172A] block mb-4`}>ALDERMAN</span>
             <p className="text-slate-500 max-w-xs">
