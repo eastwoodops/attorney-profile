@@ -43,8 +43,8 @@ export default function RootLayout({
     },
     "sameAs": [
       "https://aldermanlawfirm.com",
-      "https://www.cobar.org", // Placeholder for actual bar profile
-      "https://www.linkedin.com" // Placeholder
+      "https://www.avvo.com/attorneys/80522-co-kimberly-aldermanrufe-1951271.html",
+      "https://www.linkedin.com/in/kimberly-alderman-rufe-a21a6b395"
     ],
     "address": {
       "@type": "PostalAddress",
