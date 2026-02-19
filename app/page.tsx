@@ -1,9 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 
 const serif = Source_Serif_4({ subsets: ["latin"], weight: ["400", "500"] });
 const sans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className={`min-h-screen bg-paper text-ink ${sans.className}`}>
       
@@ -36,15 +41,15 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6">
-            <a 
-              href="#contact" 
-              className="inline-block bg-ink text-paper px-8 py-4 text-xs uppercase tracking-widest font-semibold hover:bg-bronze transition-colors"
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="inline-block bg-ink text-paper px-8 py-4 text-xs uppercase tracking-widest font-semibold hover:bg-bronze transition-colors text-center"
             >
               For Attorneys — Consult / Referral
-            </a>
+            </button>
             <a 
               href="https://aldermanlawfirm.com" 
-              className="inline-block border border-ink text-ink px-8 py-4 text-xs uppercase tracking-widest font-semibold hover:bg-ink hover:text-paper transition-colors"
+              className="inline-block border border-ink text-ink px-8 py-4 text-xs uppercase tracking-widest font-semibold hover:bg-ink hover:text-paper transition-colors text-center"
             >
               For Individuals — Start Here
             </a>
@@ -97,24 +102,33 @@ export default function Home() {
       </section>
 
       {/* SECTION 3: ADMISSIONS */}
-      <section className="border-b border-ink/10">
-        <div className="max-w-3xl mx-auto px-6 md:px-8 py-20">
-          <h2 className={`${serif.className} text-2xl font-medium mb-12 text-ink`}>
-            Admissions
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            <ul className="space-y-3 text-ink">
-              <li>United States Court of Appeals for the Tenth Circuit</li>
-              <li>United States Court of Appeals for the Seventh Circuit</li>
-              <li>United States Court of Appeals for the Sixth Circuit</li>
-            </ul>
-            <ul className="space-y-3 text-ink">
-              <li>United States District Court for the District of Colorado</li>
-              <li>Colorado</li>
-              <li>Wisconsin</li>
-              <li>Supreme Court of the United States</li>
-            </ul>
+      <section className="border-b border-ink/10 bg-paper-dark">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-24">
+          <div className="border-l-2 border-bronze pl-8 md:pl-12 py-2">
+            <h2 className={`${serif.className} text-3xl font-medium mb-10 text-ink`}>
+              Court Admissions
+            </h2>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-bronze mb-4">Federal Jurisdictions</h3>
+                <ul className={`space-y-2 text-ink ${serif.className} text-lg`}>
+                  <li>Supreme Court of the United States</li>
+                  <li>United States Court of Appeals for the Tenth Circuit</li>
+                  <li>United States Court of Appeals for the Seventh Circuit</li>
+                  <li>United States Court of Appeals for the Sixth Circuit</li>
+                  <li>United States District Court for the District of Colorado</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-bronze mb-4">State Courts</h3>
+                <ul className={`space-y-2 text-ink ${serif.className} text-lg`}>
+                  <li>State of Colorado</li>
+                  <li>State of Wisconsin</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -224,20 +238,20 @@ export default function Home() {
               </a>
             </div>
             
-            {/* Calendar Link */}
+            {/* Consult Button Trigger */}
             <div>
-              <p className="text-sm uppercase tracking-widest text-bronze mb-3 font-semibold">Schedule a Consult</p>
-              <a 
-                href="mailto:kimberly@aldermanlawfirm.com?subject=Schedule%20Consult" 
-                className="inline-block text-ink hover:text-bronze transition-colors underline"
+              <p className="text-sm uppercase tracking-widest text-bronze mb-3 font-semibold">Attorney Intake</p>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="inline-block text-ink hover:text-bronze transition-colors underline text-left"
               >
-                Email to schedule →
-              </a>
+                Open intake form →
+              </button>
             </div>
           </div>
           
           <p className="text-xs text-ink/60 mt-12">
-            No intake questionnaire. Conflict checks are handled by email.
+            Conflict checks are handled prior to representation.
           </p>
         </div>
       </section>
@@ -279,6 +293,64 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+      {/* INTAKE MODAL */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-ink/40 backdrop-blur-sm transition-opacity"
+            onClick={() => setIsModalOpen(false)}
+          ></div>
+          <div className="relative bg-paper w-full max-w-lg shadow-2xl border border-ink/10 overflow-hidden max-h-[90vh] overflow-y-auto">
+            <div className="p-8 md:p-10">
+              <div className="flex justify-between items-start mb-8">
+                <h3 className={`${serif.className} text-2xl font-medium text-ink`}>Attorney Intake</h3>
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="text-ink/40 hover:text-ink transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+              
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div>
+                  <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">Name</label>
+                  <input type="text" className="w-full bg-white border border-ink/20 p-3 text-ink focus:border-bronze focus:outline-none transition-colors" placeholder="Referring Attorney" />
+                </div>
+                
+                <div>
+                  <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">Firm / Org</label>
+                  <input type="text" className="w-full bg-white border border-ink/20 p-3 text-ink focus:border-bronze focus:outline-none transition-colors" placeholder="Law Firm Name" />
+                </div>
+
+                <div>
+                  <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">Email</label>
+                  <input type="email" className="w-full bg-white border border-ink/20 p-3 text-ink focus:border-bronze focus:outline-none transition-colors" placeholder="attorney@firm.com" />
+                </div>
+
+                <div>
+                  <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">Case Caption / Subject</label>
+                  <input type="text" className="w-full bg-white border border-ink/20 p-3 text-ink focus:border-bronze focus:outline-none transition-colors" placeholder="Smith v. Jones (10th Cir.)" />
+                </div>
+
+                <div>
+                  <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">Message</label>
+                  <textarea rows={4} className="w-full bg-white border border-ink/20 p-3 text-ink focus:border-bronze focus:outline-none transition-colors" placeholder="Brief description of procedural posture and assistance needed..."></textarea>
+                </div>
+
+                <button className="w-full bg-ink text-paper py-4 text-xs uppercase tracking-widest font-semibold hover:bg-bronze transition-colors">
+                  Send Inquiry
+                </button>
+                
+                <p className="text-center text-xs text-ink/40 pt-2">
+                  This form is for attorney inquiries. Confidential.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
