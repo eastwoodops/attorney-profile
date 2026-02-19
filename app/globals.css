@@ -4,6 +4,7 @@
   --color-ink: #1a1a1a;
   --color-bronze: #8B7355;
   --color-paper: #FAF8F3;
+  --color-paper-dark: #F0EDE6;
   
   --font-serif: var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
