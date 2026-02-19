@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #1a1a1a;
-  --color-bronze: #8B7355;
-  --color-paper: #FAF8F3;
-  --color-paper-dark: #F0EDE6;
+  /* "Adult in the Room" Palette */
+  --color-oxford: #0F172A;   /* Deep Navy */
+  --color-bronze: #C5A059;   /* Antique Bronze */
+  --color-paper: #F5F5F0;    /* Legal Paper */
+  --color-charcoal: #334155; /* Soft Black for text */
   
   --font-serif: var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   body {
-    @apply font-sans text-ink bg-paper antialiased;
+    @apply font-sans text-oxford bg-paper antialiased;
   }
   
   /* Smooth scrolling for anchor links */
