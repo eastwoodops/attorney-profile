@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   title: "Kimberly Rufe — Appellate Counsel & Litigation Consultant",
   description: "Colorado appellate counsel and litigation consultant. Appeals, issue analysis, and briefing support for attorneys and referred clients.",
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
   },
 };
 
