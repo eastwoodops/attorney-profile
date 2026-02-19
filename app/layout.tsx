@@ -1,24 +1,28 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const serif = Source_Serif_4({
+  variable: "--font-serif",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "600", "700"], // Regular, SemiBold, Bold
+  weight: ["400", "600"],
 });
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
+const sans = Source_Sans_3({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500"], // Regular, Medium
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Alderman Law Firm | Premium Appellate & Civil Litigation",
-  description: "Restrained, authoritative legal representation for complex disputes.",
+  title: "Kimberly Rufe — Appellate Counsel & Litigation Consultant",
+  description: "Colorado appellate counsel and litigation consultant. Appeals, issue analysis, and briefing support for attorneys and referred clients.",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -26,11 +30,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Attorney",
+    "name": "Kimberly Rufe",
+    "jobTitle": "Appellate Counsel & Litigation Consultant",
+    "url": "https://kimberlyrufe.com",
+    "affiliation": {
+      "@type": "LegalService",
+      "name": "Alderman Law Firm",
+      "url": "https://aldermanlawfirm.com"
+    },
+    "sameAs": [
+      "https://aldermanlawfirm.com",
+      "https://www.cobar.org", // Placeholder for actual bar profile
+      "https://www.linkedin.com" // Placeholder
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Fort Collins",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    }
+  };
+
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${sourceSans.variable} antialiased bg-paper text-charcoal`}
+        className={`${serif.variable} ${sans.variable} antialiased bg-[#FAF8F3] text-[#1a1a1a]`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

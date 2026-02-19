@@ -1,193 +1,285 @@
-import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 
-const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "600", "700"] });
-const sourceSans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "500"] });
+const serif = Source_Serif_4({ subsets: ["latin"], weight: ["400", "600"] });
+const sans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export default function Home() {
   return (
-    <div className={`min-h-screen bg-[#F5F5F0] text-[#1E293B] ${sourceSans.className}`}>
+    <div className={`min-h-screen bg-[#FAF8F3] text-[#1a1a1a] ${sans.className}`}>
       
-      {/* 1. HERO */}
-      <section className="relative pt-32 pb-24 md:pt-48 md:pb-48 px-6 md:px-12 border-b border-[#0F172A]/5">
-        <div className="container-legal">
-          <div className="max-w-4xl">
-            {/* Logo Incorporation */}
-            <div className="mb-12">
-              <img src="/alderman_logo.png" alt="Alderman Law Firm" className="h-16 object-contain" />
+      {/* HEADER */}
+      <header className="border-b border-[#1a1a1a]/10 sticky top-0 bg-[#FAF8F3] z-50">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-6 flex justify-between items-center">
+          <h1 className={`${serif.className} text-xl font-semibold tracking-tight`}>
+            Kimberly Rufe
+          </h1>
+          <a 
+            href="https://aldermanlawfirm.com" 
+            className="text-xs uppercase tracking-widest text-[#8B7355] hover:text-[#1a1a1a] transition-colors"
+          >
+            Alderman Law Firm →
+          </a>
+        </div>
+      </header>
+
+      {/* SECTION 1: HERO */}
+      <section className="border-b border-[#1a1a1a]/10">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-20 md:py-32">
+          <h1 className={`${serif.className} text-5xl md:text-6xl font-semibold mb-4 leading-tight`}>
+            Kimberly Rufe
+          </h1>
+          <p className="text-lg md:text-xl text-[#8B7355] mb-8 font-semibold">
+            Appellate Counsel & Litigation Consultant
+          </p>
+          <p className="text-lg leading-relaxed mb-12 text-[#1a1a1a] max-w-2xl">
+            I represent parties and assist trial counsel in appellate and record-driven litigation matters. My work focuses on issue selection, briefing, and procedural strategy in state and federal courts.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6">
+            <a 
+              href="#contact" 
+              className="inline-block bg-[#1a1a1a] text-[#FAF8F3] px-8 py-4 text-xs uppercase tracking-widest font-semibold hover:bg-[#8B7355] transition-colors"
+            >
+              For Attorneys — Consult / Referral
+            </a>
+            <a 
+              href="https://aldermanlawfirm.com" 
+              className="inline-block border border-[#1a1a1a] text-[#1a1a1a] px-8 py-4 text-xs uppercase tracking-widest font-semibold hover:bg-[#1a1a1a] hover:text-[#FAF8F3] transition-colors"
+            >
+              For Individuals — Start Here
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: WHAT I DO */}
+      <section className="border-b border-[#1a1a1a]/10">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-20">
+          <p className="text-lg mb-8 italic text-[#1a1a1a]">
+            I work with lawyers and clients at stages where legal outcome depends on the written record.
+          </p>
+          
+          <ul className="space-y-4 mb-12 text-[#1a1a1a]">
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Appeals in Colorado appellate courts and the Tenth Circuit</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Issue preservation and error analysis</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Record review and procedural strategy</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Brief drafting and motion practice</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Post-trial and post-judgment motions</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Advisory/consulting support to trial counsel</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Dispositive and contract-based briefing</span>
+            </li>
+          </ul>
+          
+          <p className="text-[#1a1a1a] leading-relaxed">
+            Many matters are not yet on appeal; I am often brought in to evaluate the record, frame issues, or assist with briefing before or after judgment. I do not co-chair on trial-level litigation or ongoing case management; my role is limited to appellate, briefing, and discrete litigation consulting.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 3: ADMISSIONS */}
+      <section className="border-b border-[#1a1a1a]/10">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-20">
+          <h2 className={`${serif.className} text-2xl font-semibold mb-12 text-[#1a1a1a]`}>
+            Admissions
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-12">
+            <ul className="space-y-3 text-[#1a1a1a]">
+              <li>United States Court of Appeals for the Tenth Circuit</li>
+              <li>United States Court of Appeals for the Seventh Circuit</li>
+              <li>United States Court of Appeals for the Sixth Circuit</li>
+            </ul>
+            <ul className="space-y-3 text-[#1a1a1a]">
+              <li>United States District Court for the District of Colorado</li>
+              <li>Colorado</li>
+              <li>Wisconsin</li>
+              <li>Supreme Court of the United States</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: HOW REFERRALS WORK */}
+      <section className="border-b border-[#1a1a1a]/10">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-20">
+          <h2 className={`${serif.className} text-2xl font-semibold mb-8 text-[#1a1a1a]`}>
+            How Referrals Work
+          </h2>
+          
+          <p className="text-[#1a1a1a] mb-10 leading-relaxed">
+            I can appear as counsel of record or work in a consulting capacity. Trial counsel may remain involved as desired. Consults may be limited to discrete procedural questions or extend through full briefing.
+          </p>
+          
+          <ul className="space-y-3 mb-10 text-[#1a1a1a]">
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Direct referral representation</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Behind-the-scenes consulting</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Issue evaluation</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Drafting and editing dispositive briefs</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-[#8B7355] font-semibold">•</span>
+              <span>Strategy consultation before filing</span>
+            </li>
+          </ul>
+          
+          <p className="text-[#1a1a1a] leading-relaxed">
+            I also work with out-of-state attorneys, including Wisconsin, in a consulting or drafting capacity. In trial-level matters, local counsel remains counsel of record and I assist with research, issue analysis, and briefing. Much of this work arises from appellate and post-judgment issues involving written agreements or court rulings.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 5: ROUTING BLOCK */}
+      <section className="border-b border-[#1a1a1a]/10 bg-[#F0EDE6]">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-16">
+          <h2 className={`${serif.className} text-2xl font-semibold mb-6 text-[#1a1a1a]`}>
+            Not a lawyer?
+          </h2>
+          <p className="text-[#1a1a1a] mb-8 leading-relaxed">
+            If you were referred to me for help with a dispute or personal legal matter, please begin at Alderman Law Firm. That site explains the types of disputes I personally handle and is the correct starting point for representation if you are not an attorney.
+          </p>
+          <a 
+            href="https://aldermanlawfirm.com" 
+            className="inline-block bg-[#1a1a1a] text-[#FAF8F3] px-8 py-4 text-xs uppercase tracking-widest font-semibold hover:bg-[#8B7355] transition-colors"
+          >
+            Go to Alderman Law Firm
+          </a>
+        </div>
+      </section>
+
+      {/* SECTION 6: BIO */}
+      <section className="border-b border-[#1a1a1a]/10">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-20">
+          <div className="grid md:grid-cols-3 gap-12 items-start">
+            {/* Portrait */}
+            <div className="md:col-span-1">
+              <div className="w-full aspect-square rounded overflow-hidden">
+                <img 
+                  src="/kimberly-rufe-portrait.jpg" 
+                  alt="Kimberly Rufe" 
+                  className="w-full h-full object-cover filter grayscale"
+                />
+              </div>
             </div>
             
-            <h1 className={`${playfair.className} mb-12`}>
-              Appellate & Complex <br/>Civil Litigation.
-            </h1>
-            <p className="prose-legal text-xl md:text-2xl mb-16 text-slate-600 max-w-2xl">
-              When the trial goes wrong, the record speaks. We handle the appeal and enforce the judgment.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <button className="bg-[#0F172A] text-white px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#1E293B] transition-colors rounded-none">
-                Review Your Case
-              </button>
-              <button className="border border-[#0F172A] text-[#0F172A] px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#0F172A] hover:text-white transition-colors rounded-none">
-                Practice Areas
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. TRUST SIGNALS (Bar) */}
-      <div className="border-b border-[#0F172A]/5 bg-[#FAF9F6]">
-        <div className="container-legal py-12 flex flex-wrap justify-between items-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-          <span className={`${playfair.className} text-lg md:text-xl font-medium text-[#0F172A]`}>U.S. Supreme Court Bar</span>
-          <span className={`${playfair.className} text-lg md:text-xl font-medium text-[#0F172A]`}>10th Circuit Court of Appeals</span>
-          <span className={`${playfair.className} text-lg md:text-xl font-medium text-[#0F172A]`}>Colorado Supreme Court</span>
-          <span className={`${playfair.className} text-lg md:text-xl font-medium text-[#0F172A]`}>Colorado Court of Appeals</span>
-        </div>
-      </div>
-
-      {/* 3. PHILOSOPHY */}
-      <section className="py-32 bg-white">
-        <div className="container-legal grid md:grid-cols-12 gap-16 items-start">
-          <div className="md:col-span-5 flex gap-6">
-            <div className="w-12 h-12 rounded-full bg-[#0F172A] text-white flex items-center justify-center font-serif italic text-xl shrink-0 mt-2">
-              N
-            </div>
-            <div>
-              <h2 className="leading-tight">
-                A Practice Built on the Record.
-              </h2>
-              <div className="h-1 w-16 bg-[#C5A059] mt-8"></div>
-            </div>
-          </div>
-          <div className="md:col-span-7 grid md:grid-cols-2 gap-12 pt-2">
-            <div>
-              <h3 className="mb-4 text-xl md:text-2xl">Appellate Focus</h3>
-              <p className="text-slate-600 leading-relaxed text-sm">
-                Appeals require a different skill set than trials. We analyze the record for reversible error and write briefs designed for judges, not juries.
+            {/* Text */}
+            <div className="md:col-span-2 space-y-6 text-[#1a1a1a]">
+              <p className="leading-relaxed">
+                My practice focuses on record-driven litigation—the work that wins or loses on a clear, persuasive written argument. I work with trial counsel and parties to evaluate appellate options, frame issues for appeal, and draft briefs and motions that courts actually read.
               </p>
-            </div>
-            <div>
-              <h3 className="mb-4 text-xl md:text-2xl">Document Precision</h3>
-              <p className="text-slate-600 leading-relaxed text-sm">
-                In complex civil disputes—from promissory notes to real estate—the answer is in the documents. We strip away the noise to enforce the written terms.
+              <p className="leading-relaxed">
+                Most of my work involves collaborating with trial counsel who remain closely involved in the case. I bring appellate perspective to trial strategy and procedural choices, and I handle the specialized work of motion drafting and record analysis that trial lawyers often need to outsource.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. PRACTICE AREAS */}
-      <section className="py-32 bg-[#F5F5F0]">
-        <div className="container-legal">
-          <div className="flex justify-between items-end mb-20">
-            <h2 className="text-5xl">Practice Areas</h2>
-            <a href="#" className="hidden md:block text-xs font-bold uppercase tracking-[0.2em] text-[#C5A059] border-b border-[#C5A059] pb-2 hover:text-[#0F172A] hover:border-[#0F172A] transition-colors">View All Areas of Practice</a>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Appellate Representation", desc: "Civil and criminal appeals in state and federal courts." },
-              { title: "Note Enforcement", desc: "Collecting unpaid loans and enforcing judgments." },
-              { title: "Breach of Contract", desc: "Disputes over written agreements and performance." },
-              { title: "Real Estate", desc: "Title, ownership, and transaction failures." }
-            ].map((area, i) => (
-              <div key={i} className="group bg-white p-10 border border-slate-200 hover:border-[#C5A059] transition-all duration-300 shadow-sm flex flex-col h-full min-h-[320px]">
-                <span className="text-[10px] font-bold text-[#C5A059] uppercase tracking-widest mb-6 block">0{i+1}</span>
-                <h3 className="text-2xl text-[#0F172A] mb-4 group-hover:text-[#C5A059] transition-colors duration-300 leading-tight">{area.title}</h3>
-                <p className="text-xs text-slate-500 mb-8 leading-relaxed flex-grow">{area.desc}</p>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0F172A] border-b border-transparent group-hover:border-[#0F172A] pb-1 transition-all self-start">Details</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. ATTORNEY BIO */}
-      <section className="bg-[#0F172A] text-white overflow-hidden">
-        <div className="grid md:grid-cols-2 min-h-[700px]">
-          {/* Text Side */}
-          <div className="p-12 md:p-24 flex flex-col justify-center border-r border-white/5">
-            <span className="text-[#C5A059] text-[10px] font-bold uppercase tracking-[0.2em] mb-8 block">Principal Attorney</span>
-            <h2 className="text-white text-4xl md:text-5xl font-semibold mb-8 leading-tight">Jerold A. Alderman</h2>
-            <p className="text-slate-400 text-lg leading-relaxed mb-12 max-w-md italic font-serif">
-              "The appeal is not a re-do of the trial. It is a precise surgical intervention on the record."
-            </p>
-            <ul className="space-y-4 mb-16 text-xs font-mono text-slate-400 uppercase tracking-wider">
-              <li className="flex items-center gap-4">
-                <div className="w-1 h-1 bg-[#C5A059]"></div> 300+ Appellate Briefs Filed
-              </li>
-              <li className="flex items-center gap-4">
-                <div className="w-1 h-1 bg-[#C5A059]"></div> Former Law Clerk
-              </li>
-              <li className="flex items-center gap-4">
-                <div className="w-1 h-1 bg-[#C5A059]"></div> 30+ Years Experience
-              </li>
-            </ul>
-            <button className="border border-white/20 text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-[#0F172A] transition-colors self-start">
-              Read Biography
-            </button>
-          </div>
-          
-          {/* Image Side */}
-          <div className="relative bg-[#1E293B] border-t md:border-t-0 md:border-l border-white/5">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white/10 font-serif italic text-3xl">[Portrait Placeholder]</span>
-            </div>
-            {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-60"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. FAQ / FOOTER CTA */}
-      <section className="py-32 bg-white">
-        <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="mb-8 text-5xl">
-            Is Your Judgment Final?
+      {/* SECTION 7: CONTACT */}
+      <section id="contact" className="border-b border-[#1a1a1a]/10">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-20">
+          <h2 className={`${serif.className} text-2xl font-semibold mb-12 text-[#1a1a1a]`}>
+            Contact
           </h2>
-          <p className="prose-legal text-lg text-slate-500 mb-16 mx-auto leading-loose">
-            Time is the enemy of an appeal. Strict deadlines apply to post-trial motions and notices of appeal. Do not wait to review the record.
+          
+          <div className="space-y-8">
+            {/* Email */}
+            <div>
+              <p className="text-sm uppercase tracking-widest text-[#8B7355] mb-3 font-semibold">Email</p>
+              <a 
+                href="mailto:kimberly@aldermanlawfirm.com" 
+                className="text-lg text-[#1a1a1a] hover:text-[#8B7355] transition-colors break-all"
+              >
+                kimberly@aldermanlawfirm.com
+              </a>
+            </div>
+            
+            {/* Calendar Link */}
+            <div>
+              <p className="text-sm uppercase tracking-widest text-[#8B7355] mb-3 font-semibold">Schedule a Consult</p>
+              <a 
+                href="mailto:kimberly@aldermanlawfirm.com?subject=Schedule%20Consult" 
+                className="inline-block text-[#1a1a1a] hover:text-[#8B7355] transition-colors underline"
+              >
+                Email to schedule →
+              </a>
+            </div>
+          </div>
+          
+          <p className="text-xs text-[#1a1a1a]/60 mt-12">
+            No intake questionnaire. Conflict checks are handled by email.
           </p>
-          <button className="bg-[#0F172A] text-white px-12 py-6 text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#C5A059] transition-colors shadow-2xl shadow-[#0F172A]/20">
-            Schedule a Case Review
-          </button>
-          <p className="mt-8 text-[10px] text-slate-400 uppercase tracking-[0.2em]">Confidential & Secure</p>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#F5F5F0] border-t border-[#0F172A]/5 py-24 px-6 md:px-12">
-        <div className="container-legal grid md:grid-cols-12 gap-12 text-xs">
-          <div className="col-span-2">
-            <span className={`${playfair.className} text-2xl font-bold text-[#0F172A] block mb-4`}>ALDERMAN</span>
-            <p className="text-slate-500 max-w-xs">
-              Premium appellate and civil litigation representation for businesses and individuals in Colorado and Federal Courts.
+      <footer className="bg-[#F0EDE6] border-t border-[#1a1a1a]/10">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-12 text-sm text-[#1a1a1a]/70">
+          <p className={`${serif.className} font-semibold text-[#1a1a1a] mb-6`}>
+            Kimberly Rufe<br />
+            <span className="text-xs uppercase tracking-widest font-normal">Attorney at Law</span>
+          </p>
+          
+          <div className="space-y-3 text-xs mb-8">
+            <p>
+              <a 
+                href="mailto:kimberly@aldermanlawfirm.com" 
+                className="hover:text-[#1a1a1a] transition-colors"
+              >
+                kimberly@aldermanlawfirm.com
+              </a>
+            </p>
+            <p>
+              <a 
+                href="https://aldermanlawfirm.com" 
+                className="text-[#8B7355] hover:text-[#1a1a1a] transition-colors"
+              >
+                Alderman Law Firm
+              </a>
+            </p>
+            <p>
+              <a 
+                href="#" 
+                className="text-[#8B7355] hover:text-[#1a1a1a] transition-colors"
+              >
+                Colorado Bar Profile
+              </a> (placeholder)
             </p>
           </div>
-          <div>
-            <h4 className="font-bold text-[#0F172A] uppercase tracking-widest mb-6 text-xs">Contact</h4>
-            <div className="space-y-2 text-slate-600">
-              <p>418 S Howes St</p>
-              <p>Fort Collins, CO 80521</p>
-              <p className="mt-4">720-588-3529</p>
-              <p>info@aldermanlawfirm.com</p>
-            </div>
-          </div>
-          <div>
-            <h4 className="font-bold text-[#0F172A] uppercase tracking-widest mb-6 text-xs">Practice</h4>
-            <div className="space-y-2 text-slate-600">
-              <p>Appeals</p>
-              <p>Contracts</p>
-              <p>Real Estate</p>
-              <p>Collections</p>
-            </div>
-          </div>
-        </div>
-        <div className="max-w-6xl mx-auto mt-16 pt-8 border-t border-[#0F172A]/5 flex justify-between text-xs text-slate-400">
-          <p>© 2026 Alderman Law Firm. All Rights Reserved.</p>
-          <div className="space-x-6">
-            <span>Disclaimer</span>
-            <span>Privacy</span>
-          </div>
+          
+          <p className="text-xs border-t border-[#1a1a1a]/10 pt-8 text-[#1a1a1a]/60">
+            This site does not constitute legal advice or establish an attorney-client relationship. Representation is not formed until a written engagement agreement is signed and any applicable conflicts checks are complete.
+          </p>
         </div>
       </footer>
 
