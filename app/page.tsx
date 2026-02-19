@@ -1,10 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 
 const serif = Source_Serif_4({ subsets: ["latin"], weight: ["400", "500"] });
 const sans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "500", "600"] });
+
+// Email Obfuscation Component
+const ObfuscatedEmail = ({ className = "", label = "" }) => {
+  const [email, setEmail] = useState("");
+  
+  useEffect(() => {
+    // Simple reconstruction to baffle basic scrapers
+    const user = "kimberly";
+    const domain = "aldermanlawfirm.com";
+    setEmail(`${user}@${domain}`);
+  }, []);
+
+  if (!email) return <span className={className}>Loading contact...</span>;
+
+  return (
+    <a 
+      href={`mailto:${email}`} 
+      className={className}
+    >
+      {label || email}
+    </a>
+  );
+};
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,44 +83,55 @@ export default function Home() {
       {/* SECTION 2: WHAT I DO */}
       <section className="border-b border-ink/10">
         <div className="max-w-3xl mx-auto px-6 md:px-8 py-20">
-          <p className="text-lg mb-8 italic text-ink">
-            I work with lawyers and clients at stages where legal outcome depends on the written record.
-          </p>
+          <div className="mb-12">
+            <h2 className={`${serif.className} text-3xl font-medium mb-6 text-ink`}>
+              Record-Driven Advocacy
+            </h2>
+            <p className="text-lg leading-relaxed text-ink">
+              My practice is dedicated to stages of litigation where the outcome turns on the written record. I partner with trial counsel to ensure the legal theory is preserved, articulated, and persuasive.
+            </p>
+          </div>
           
-          <ul className="space-y-4 mb-12 text-ink">
-            <li className="flex gap-4">
-              <span className="text-bronze font-semibold">•</span>
-              <span>Appeals in Colorado appellate courts and the Tenth Circuit</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-bronze font-semibold">•</span>
-              <span>Issue preservation and error analysis</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-bronze font-semibold">•</span>
-              <span>Record review and procedural strategy</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-bronze font-semibold">•</span>
-              <span>Brief drafting and motion practice</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-bronze font-semibold">•</span>
-              <span>Post-trial and post-judgment motions</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-bronze font-semibold">•</span>
-              <span>Advisory/consulting support to trial counsel</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-bronze font-semibold">•</span>
-              <span>Dispositive and contract-based briefing</span>
-            </li>
-          </ul>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-4 mb-12 text-ink">
+            <div className="space-y-4">
+              <div className="flex gap-4 items-start">
+                <span className="text-bronze font-semibold mt-1">•</span>
+                <span>Appeals in Colorado appellate courts and the Tenth Circuit</span>
+              </div>
+              <div className="flex gap-4 items-start">
+                <span className="text-bronze font-semibold mt-1">•</span>
+                <span>Issue preservation and error analysis</span>
+              </div>
+              <div className="flex gap-4 items-start">
+                <span className="text-bronze font-semibold mt-1">•</span>
+                <span>Record review and procedural strategy</span>
+              </div>
+              <div className="flex gap-4 items-start">
+                <span className="text-bronze font-semibold mt-1">•</span>
+                <span>Brief drafting and motion practice</span>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="flex gap-4 items-start">
+                <span className="text-bronze font-semibold mt-1">•</span>
+                <span>Post-trial and post-judgment motions</span>
+              </div>
+              <div className="flex gap-4 items-start">
+                <span className="text-bronze font-semibold mt-1">•</span>
+                <span>Advisory/consulting support to trial counsel</span>
+              </div>
+              <div className="flex gap-4 items-start">
+                <span className="text-bronze font-semibold mt-1">•</span>
+                <span>Dispositive and contract-based briefing</span>
+              </div>
+            </div>
+          </div>
           
-          <p className="text-ink leading-relaxed">
-            Many matters are not yet on appeal; I am often brought in to evaluate the record, frame issues, or assist with briefing before or after judgment. I do not co-chair on trial-level litigation or ongoing case management; my role is limited to appellate, briefing, and discrete litigation consulting.
-          </p>
+          <div className="bg-ink/5 p-8 border-l-2 border-bronze">
+            <p className="text-ink leading-relaxed italic">
+              "Many matters are not yet on appeal; I am often brought in to evaluate the record, frame issues, or assist with briefing before or after judgment. I do not co-chair on trial-level litigation or ongoing case management; my role is limited to appellate, briefing, and discrete litigation consulting."
+            </p>
+          </div>
         </div>
       </section>
 
@@ -230,12 +264,9 @@ export default function Home() {
             {/* Email */}
             <div>
               <p className="text-sm uppercase tracking-widest text-bronze mb-3 font-semibold">Email</p>
-              <a 
-                href="mailto:kimberly@aldermanlawfirm.com" 
-                className="text-lg text-ink hover:text-bronze transition-colors break-all"
-              >
-                kimberly@aldermanlawfirm.com
-              </a>
+              <ObfuscatedEmail 
+                className="text-lg text-ink hover:text-bronze transition-colors break-all" 
+              />
             </div>
             
             {/* Consult Button Trigger */}
@@ -266,12 +297,7 @@ export default function Home() {
           
           <div className="space-y-3 text-xs mb-8">
             <p>
-              <a 
-                href="mailto:kimberly@aldermanlawfirm.com" 
-                className="hover:text-ink transition-colors"
-              >
-                kimberly@aldermanlawfirm.com
-              </a>
+              <ObfuscatedEmail className="hover:text-ink transition-colors" />
             </p>
             <p>
               <a 
