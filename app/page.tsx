@@ -218,9 +218,14 @@ export default function Home() {
             Contact
           </h2>
           
-          <div className="space-y-4">
-            <p className="text-base text-oxford mb-2">Email is preferred. Attaching the order or brief is helpful.</p>
-            <ObfuscatedEmail className="text-xl text-oxford hover:text-bronze transition-colors border-b border-oxford/20 pb-1" />
+          <div className="space-y-6">
+            <p className="text-base text-oxford">Email is preferred. Attaching the order or brief is helpful.</p>
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="inline-block bg-oxford text-paper px-8 py-4 text-xs uppercase tracking-widest font-bold hover:bg-bronze transition-colors text-center"
+            >
+              For Attorneys — Email
+            </button>
           </div>
         </section>
 
