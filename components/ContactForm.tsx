@@ -13,6 +13,7 @@ export default function ContactForm() {
   const [serverError, setServerError] = useState<string | null>(null);
   const turnstileRef = useRef<any>(null);
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [fileName, setFileName] = useState<string>("");
 
   const {
     register,
@@ -58,6 +59,7 @@ export default function ContactForm() {
 
       setStatus("success");
       reset();
+      setFileName(""); // Reset file name
       if (turnstileRef.current) turnstileRef.current.reset();
       
     } catch (error) {
@@ -141,12 +143,12 @@ export default function ContactForm() {
       </div>
 
       {/* Attachment UI */}
-      <div className="pt-2 border-t border-oxford/5">
-        <label className="text-oxford/40 hover:text-bronze flex items-center gap-2 text-xs font-medium py-2 px-3 rounded hover:bg-paper transition-colors cursor-pointer w-fit">
+      <div className="pt-2 border-t border-oxford/5 flex items-center gap-4 flex-wrap">
+        <label className="text-oxford/40 hover:text-bronze flex items-center gap-2 text-xs font-medium py-2 px-3 rounded hover:bg-paper transition-colors cursor-pointer w-fit border border-transparent hover:border-oxford/10">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
           </svg>
-          Attach Order/Brief
+          {fileName ? 'Replace Attachment' : 'Attach Order/Brief'}
           <input
             type="file"
             accept=".pdf,.jpg,.jpeg,.png,.docx"
@@ -159,7 +161,13 @@ export default function ContactForm() {
                   if (e.target.files?.[0]?.size! > 10 * 1024 * 1024) {
                     alert("File too large. Max 10MB.");
                     e.target.value = "";
+                    setFileName("");
                     return;
+                  }
+                  if (e.target.files?.[0]) {
+                    setFileName(e.target.files[0].name);
+                  } else {
+                    setFileName("");
                   }
                   onChange(e);
                 }
@@ -167,7 +175,28 @@ export default function ContactForm() {
             })()}
           />
         </label>
-        <p className="text-[10px] text-oxford/30 italic ml-3 mt-1">(.pdf, .docx, .jpg, .png)</p>
+        
+        {fileName && (
+          <div className="flex items-center gap-2 bg-oxford/5 px-3 py-1 rounded-full text-xs text-oxford">
+            <span className="truncate max-w-[150px]">{fileName}</span>
+            <button
+              type="button"
+              onClick={() => {
+                setValue("attachment", null as any); // Reset in hook form
+                setFileName("");
+                // We can't clear file input value programmatically easily without ref, 
+                // but react-hook-form handles the state. 
+                // If user clicks attach again, it replaces.
+              }}
+              className="text-oxford/40 hover:text-red-500 transition-colors ml-1"
+              aria-label="Remove attachment"
+            >
+              ✕
+            </button>
+          </div>
+        )}
+        
+        {!fileName && <p className="text-[10px] text-oxford/30 italic">(.pdf, .docx, .jpg, .png)</p>}
       </div>
 
       {/* Turnstile */}
