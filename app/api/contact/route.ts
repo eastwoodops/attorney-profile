@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
     const { data: emailData, error: emailError } = await resend.emails.send({
       from: "Contact Form <website@kimberlyrufe.com>", // Ensure domain is verified in Resend
       to: [process.env.BUSINESS_EMAIL_RECIPIENT || "kimberly@aldermanlawfirm.com"],
-      reply_to: email,
+      replyTo: email,
       subject: `[New Inquiry] ${subject}`,
       text: `
 New Contact Inquiry

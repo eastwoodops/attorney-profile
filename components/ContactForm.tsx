@@ -38,10 +38,7 @@ export default function ContactForm() {
     formData.append("subject", data.subject);
     formData.append("description", data.description);
     formData.append("turnstileToken", turnstileToken);
-    
-    // Honeypot (managed manually to avoid Zod schema conflict if we want strict typing)
-    // Actually schema has it as max(0), so empty string is valid.
-    formData.append("company", ""); 
+    formData.append("company", ""); // Honeypot
 
     if (data.attachment && data.attachment instanceof FileList && data.attachment.length > 0) {
       formData.append("attachment", data.attachment[0]);
@@ -71,7 +68,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-paper border border-oxford/10 p-8 text-center rounded-lg">
+      <div className="bg-paper border border-oxford/10 p-8 text-center rounded-lg h-full flex flex-col justify-center">
         <h3 className="text-xl font-medium text-oxford mb-4">Message Sent</h3>
         <p className="text-oxford/70 mb-6">
           Thank you for your inquiry. I review new matters daily and will respond if there is a potential fit for representation.
@@ -87,9 +84,9 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       
-      {/* Honeypot - visually hidden */}
+      {/* Honeypot */}
       <input
         type="text"
         {...register("company")}
@@ -98,80 +95,72 @@ export default function ContactForm() {
         tabIndex={-1}
       />
 
-      {/* Email */}
-      <div>
-        <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">
-          Email Address
-        </label>
-        <input
-          type="email"
-          {...register("email")}
-          className="w-full bg-white border border-oxford/20 p-3 text-oxford focus:border-bronze focus:outline-none transition-colors rounded-none"
-          placeholder="attorney@firm.com"
-        />
-        {errors.email && (
-          <p className="text-xs text-red-600 mt-1">{errors.email.message}</p>
-        )}
+      {/* From Field */}
+      <div className="flex flex-col sm:flex-row sm:items-baseline border-b border-oxford/10 pb-2 gap-1 sm:gap-0">
+        <label className="text-sm text-oxford/60 w-16 flex-shrink-0">From:</label>
+        <div className="flex-grow min-w-0">
+          <input
+            type="email"
+            {...register("email")}
+            className="w-full bg-transparent focus:outline-none text-oxford text-sm placeholder:text-oxford/20"
+            placeholder="your.email@firm.com"
+          />
+          {errors.email && (
+            <p className="text-xs text-red-600 mt-1">{errors.email.message}</p>
+          )}
+        </div>
       </div>
 
-      {/* Subject */}
-      <div>
-        <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">
-          Subject / Case Caption
-        </label>
-        <input
-          type="text"
-          {...register("subject")}
-          className="w-full bg-white border border-oxford/20 p-3 text-oxford focus:border-bronze focus:outline-none transition-colors rounded-none"
-          placeholder="Smith v. Jones (10th Cir.)"
-        />
-        {errors.subject && (
-          <p className="text-xs text-red-600 mt-1">{errors.subject.message}</p>
-        )}
+      {/* Subject Field */}
+      <div className="flex flex-col sm:flex-row sm:items-baseline border-b border-oxford/10 pb-2 gap-1 sm:gap-0">
+        <label className="text-sm text-oxford/60 w-16 flex-shrink-0">Subject:</label>
+        <div className="flex-grow min-w-0">
+          <input
+            type="text"
+            {...register("subject")}
+            className="w-full bg-transparent focus:outline-none text-oxford text-sm placeholder:text-oxford/20"
+            placeholder="Case Caption / Order / Referral"
+          />
+          {errors.subject && (
+            <p className="text-xs text-red-600 mt-1">{errors.subject.message}</p>
+          )}
+        </div>
       </div>
 
-      {/* Description */}
-      <div>
-        <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">
-          Message
-        </label>
+      {/* Message Body */}
+      <div className="pt-2">
         <textarea
-          rows={5}
+          rows={8}
           {...register("description")}
-          className="w-full bg-white border border-oxford/20 p-3 text-oxford focus:border-bronze focus:outline-none transition-colors rounded-none resize-y"
-          placeholder="Brief description of procedural posture and assistance needed..."
+          className="w-full bg-transparent focus:outline-none text-oxford text-base leading-relaxed placeholder:text-oxford/20 resize-none min-h-[150px]"
+          placeholder="Brief description of procedural posture, deadlines, or assistance needed..."
         />
         {errors.description && (
           <p className="text-xs text-red-600 mt-1">{errors.description.message}</p>
         )}
       </div>
 
-      {/* Attachment */}
-      <div>
-        <label className="block text-xs uppercase tracking-widest text-bronze font-semibold mb-2">
-          Attachment (Optional)
-        </label>
-        <input
-          type="file"
-          accept=".pdf,.jpg,.jpeg,.png,.docx"
-          {...register("attachment")}
-          onChange={(e) => {
-             // Basic client side check
-             if (e.target.files?.[0]?.size! > 10 * 1024 * 1024) {
+      {/* Attachment UI */}
+      <div className="pt-2 border-t border-oxford/5">
+        <label className="text-oxford/40 hover:text-bronze flex items-center gap-2 text-xs font-medium py-2 px-3 rounded hover:bg-paper transition-colors cursor-pointer w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+          </svg>
+          Attach Order/Brief
+          <input
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png,.docx"
+            className="hidden"
+            {...register("attachment")}
+            onChange={(e) => {
+              if (e.target.files?.[0]?.size! > 10 * 1024 * 1024) {
                 alert("File too large. Max 10MB.");
                 e.target.value = "";
-             }
-          }}
-          className="block w-full text-sm text-oxford/70
-            file:mr-4 file:py-2 file:px-4
-            file:rounded-none file:border-0
-            file:text-xs file:font-semibold
-            file:bg-oxford/5 file:text-oxford
-            hover:file:bg-oxford/10 transition-colors"
-        />
-        <p className="text-[10px] text-oxford/40 mt-1">
-          Max 10MB. PDF, DOCX, JPG, PNG allowed.
-        </p>
+              }
+            }}
+          />
+        </label>
+        <p className="text-[10px] text-oxford/30 italic ml-3 mt-1">(.pdf, .docx, .jpg, .png)</p>
       </div>
 
       {/* Turnstile */}
@@ -188,28 +177,25 @@ export default function ContactForm() {
              size: 'flexible'
           }}
         />
-        {/* Hidden field for Zod validation hookup if needed, 
-            though we handle token via state + setValue manually above */}
       </div>
 
-      {/* Errors & Submit */}
+      {/* Errors */}
       {serverError && (
-        <div className="p-3 bg-red-50 border border-red-100 text-red-600 text-sm">
+        <div className="p-3 bg-red-50 border border-red-100 text-red-600 text-sm rounded">
           {serverError}
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="w-full bg-oxford text-paper py-4 text-xs uppercase tracking-widest font-semibold hover:bg-bronze transition-colors disabled:opacity-70"
-      >
-        {status === "submitting" ? "Sending..." : "Send Message"}
-      </button>
-
-      <p className="text-center text-[10px] text-oxford/30 pt-2">
-        Protected by Turnstile and internal security policies.
-      </p>
+      {/* Footer Actions */}
+      <div className="flex justify-end pt-4">
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="bg-oxford text-paper px-6 py-2 text-xs uppercase tracking-widest font-bold hover:bg-bronze transition-colors rounded shadow-sm w-full sm:w-auto disabled:opacity-70"
+        >
+          {status === "submitting" ? "Sending..." : "Send Message"}
+        </button>
+      </div>
     </form>
   );
 }
