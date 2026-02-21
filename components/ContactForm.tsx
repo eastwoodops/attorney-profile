@@ -151,13 +151,20 @@ export default function ContactForm() {
             type="file"
             accept=".pdf,.jpg,.jpeg,.png,.docx"
             className="hidden"
-            {...register("attachment")}
-            onChange={(e) => {
-              if (e.target.files?.[0]?.size! > 10 * 1024 * 1024) {
-                alert("File too large. Max 10MB.");
-                e.target.value = "";
-              }
-            }}
+            {...(() => {
+              const { onChange, ...rest } = register("attachment");
+              return {
+                ...rest,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (e.target.files?.[0]?.size! > 10 * 1024 * 1024) {
+                    alert("File too large. Max 10MB.");
+                    e.target.value = "";
+                    return;
+                  }
+                  onChange(e);
+                }
+              };
+            })()}
           />
         </label>
         <p className="text-[10px] text-oxford/30 italic ml-3 mt-1">(.pdf, .docx, .jpg, .png)</p>

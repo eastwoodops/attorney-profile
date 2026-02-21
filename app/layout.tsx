@@ -17,8 +17,8 @@ const sans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Kimberly Rufe — Appellate Counsel & Litigation Consultant",
-  description: "Colorado appellate counsel and litigation consultant. Appeals, issue analysis, and briefing support for attorneys and referred clients.",
+  title: "Kimberly Rufe — Appellate Counsel & Briefing Support",
+  description: "Colorado appellate counsel and briefing support. Appeals, issue analysis, and drafting support for attorneys and referred clients.",
   robots: {
     index: false,
     follow: false,
@@ -34,7 +34,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Attorney",
     "name": "Kimberly Rufe",
-    "jobTitle": "Appellate Counsel & Litigation Consultant",
+    "jobTitle": "Appellate Counsel & Briefing Support",
     "url": "https://kimberlyrufe.com",
     "affiliation": {
       "@type": "LegalService",
